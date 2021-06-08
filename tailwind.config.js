@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false,
@@ -8,7 +10,7 @@ module.exports = {
         pomOrangeDark: "#F3722C",
         pomOrangeLight: "#F8961E",
         pomYellow: "#F9C74F",
-        PomGreen: "#90BE6D",
+        pomGreen: "#90BE6D",
         pomBlueGreen: "#7FD1B9",
         pomBlue: "#57759",
         pomDark: "#353131",
@@ -17,6 +19,10 @@ module.exports = {
         pomGray: "#D7D5D5",
         pomGrayLight: "#EBEAEA",
         pomWhite: "#F9F9F9",
+      },
+      fontFamily: {
+        sans: ['Overpass', ...defaultTheme.fontFamily.sans],
+        heading: ['Montserrat', ...defaultTheme.fontFamily.sans]
       },
       width: {
         "px": '1px'

@@ -1,0 +1,18 @@
+<svg class="circles" width="300" height="300" viewbox="0 0 300 300">
+	<defs>
+		<radialGradient id="gradient-stroke" fx="50%" fy="50%" cx="50%" cy="50%" r="75%">
+			<stop offset="0%"   stop-color="#5dc21e"/>
+			<stop offset="100%" stop-color="#bdff38"/>
+		</radialGradient>
+	</defs>
+	<circle	cx="150" cy="150" r="140" fill="transparent" stroke="#eee" stroke-width="20" class="text-pomGrayDark" />
+	<path 
+    class="circle" 
+    d="M10,150a140,140 0 1,0 280,0a140,140 0 1,0 -280,0" 
+    fill="transparent" 
+    stroke="currentColor"
+    stroke-linecap="round" 
+    stroke-width="20"
+    data-pc="75" 
+    data-r="140" />
+</svg>
