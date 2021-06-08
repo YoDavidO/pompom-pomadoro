@@ -3,13 +3,21 @@ module.exports = {
   darkMode: false,
   theme: {
     extend: {
-      // colors: {
-      //   primary: "#F02D3A",
-      //   lightGray: "#F3F4F6",
-      //   gray: "#DCDEE5",
-      //   black: "#273043",
-      //   fbBlue: "#4267B2"
-      // },
+      colors: {
+        pomRed: "#F35C5F",
+        pomOrangeDark: "#F3722C",
+        pomOrangeLight: "#F8961E",
+        pomYellow: "#F9C74F",
+        PomGreen: "#90BE6D",
+        pomBlueGreen: "#7FD1B9",
+        pomBlue: "#57759",
+        pomDark: "#353131",
+        pomDarkBg: "#4A4545",
+        pomGrayDark: "#A7A0A0",
+        pomGray: "#D7D5D5",
+        pomGrayLight: "#EBEAEA",
+        pomWhite: "#F9F9F9",
+      },
       width: {
         "px": '1px'
       }
