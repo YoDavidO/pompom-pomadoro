@@ -4,7 +4,7 @@ import clsx from "clsx";
 interface Props {
   className?: string;
   color?: string;
-  counterClockwise?: boolean;
+  clockwise?: boolean;
   current: number;
   dangerColor?: string;
   dangerThreshold?: number;
@@ -17,7 +17,7 @@ interface Props {
 export function CircleProgress ({
   className,
   color,
-  counterClockwise,
+  clockwise,
   current,
   dangerColor = "pomRed",
   dangerThreshold,
@@ -38,11 +38,15 @@ export function CircleProgress ({
     setOffset(currentOffset);
     setCurrentColor(color);
 
-    if (!!dangerThreshold) {
-      if(current <= dangerThreshold) setCurrentColor(dangerColor);
+    if (!!warningThreshold) {
+      if ((total > current && current >= warningThreshold) || (total < current && current <= warningThreshold)) setCurrentColor(warningColor);
     }
 
-  }, [circumference, color, current, offset, dangerColor, dangerThreshold, setOffset, setCurrentColor, total])
+    if (!!dangerThreshold) {
+      if((total > current && current >= dangerThreshold) || (total < current && current <= dangerThreshold)) setCurrentColor(dangerColor);
+    }
+
+  }, [circumference, color, current, offset, dangerColor, dangerThreshold, setOffset, setCurrentColor, total, warningColor, warningThreshold])
 
   return (
     <div className={clsx("circle-progress", className)} style={{ width: size, height: size }}>
@@ -74,7 +78,7 @@ export function CircleProgress ({
           stroke="currentColor"
           strokeLinecap="round"
           strokeDasharray={circumference}
-          strokeDashoffset={counterClockwise ? offset : -1 * offset}
+          strokeDashoffset={clockwise ? offset : -1 * offset}
           strokeWidth="20"
           transform={`rotate(90, ${center}, ${center})`} />
       </svg>
