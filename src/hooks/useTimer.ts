@@ -9,6 +9,12 @@ export function useTimer(duration: number, onTick?: Function, fromZero: boolean 
     setIsActive(!isActive);
   }
 
+  function stopTimer() {
+    setIsActive(false);
+    setToZeroTime(duration);
+    setFromZeroTime(0);
+  }
+
   useEffect(() => {
     let interval:NodeJS.Timeout;
 
@@ -30,6 +36,7 @@ export function useTimer(duration: number, onTick?: Function, fromZero: boolean 
   return {
     isActive,
     fromZeroTime,
+    stopTimer,
     toZeroTime,
     toggleTimer
   };

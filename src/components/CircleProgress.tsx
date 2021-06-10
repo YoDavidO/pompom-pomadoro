@@ -8,8 +8,12 @@ interface Props {
   current: number;
   dangerColor?: string;
   dangerThreshold?: number;
+  onComplete?: Function;
+  onDanger?: Function;
+  onWarning?: Function;
   size?: number;
   total: number;
+  toZero: boolean;
   warningColor?: string;
   warningThreshold?: number;
 }
@@ -21,8 +25,12 @@ export function CircleProgress ({
   current,
   dangerColor = "pomRed",
   dangerThreshold,
+  onComplete,
+  onDanger,
+  onWarning,
   size = 100,
   total,
+  toZero = false,
   warningColor = "pomYellow",
   warningThreshold
 }: Props) {
@@ -35,18 +43,43 @@ export function CircleProgress ({
 
   useEffect(() => {
     const currentOffset = circumference - ((current / total) * circumference);
+    const isComplete = (toZero && current === 0) || (!toZero && current === total);
+
     setOffset(currentOffset);
     setCurrentColor(color);
 
     if (!!warningThreshold) {
-      if ((total > current && current >= warningThreshold) || (total < current && current <= warningThreshold)) setCurrentColor(warningColor);
+      if ((total > current && current >= warningThreshold) || (total < current && current <= warningThreshold)) {
+        setCurrentColor(warningColor);
+        !!onWarning && onWarning();
+      }
     }
 
     if (!!dangerThreshold) {
-      if((total > current && current >= dangerThreshold) || (total < current && current <= dangerThreshold)) setCurrentColor(dangerColor);
+      if((total > current && current >= dangerThreshold) || (total < current && current <= dangerThreshold)) {
+        setCurrentColor(dangerColor);
+        !!onDanger && onDanger();
+      }
     }
 
-  }, [circumference, color, current, offset, dangerColor, dangerThreshold, setOffset, setCurrentColor, total, warningColor, warningThreshold])
+    if (isComplete && !!onComplete) onComplete(); 
+  }, [
+    circumference, 
+    color, 
+    current, 
+    offset, 
+    dangerColor, 
+    dangerThreshold, 
+    onComplete,
+    onDanger,
+    onWarning,
+    setOffset, 
+    setCurrentColor, 
+    total, 
+    toZero,
+    warningColor, 
+    warningThreshold
+  ]);
 
   return (
     <div className={clsx("circle-progress", className)} style={{ width: size, height: size }}>
