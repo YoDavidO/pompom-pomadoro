@@ -1,0 +1,17 @@
+.app-wrapper {
+  transform: translateX(0);
+  transition: transform .25s ease-in;
+}
+
+.app-wrapper.open {
+  transform: translateX(3.5rem);
+}
+
+.app-nav {
+  transform: translateX(-5rem);
+  transition: transform .25s ease-in;
+}
+
+.app-nav.open {
+  transform: translateX(-1.45rem);
+}
