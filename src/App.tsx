@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { AppHeader, AppNavigation } from "./components";
 import { PomView } from "./views/PomView";
+import { PomsView } from "./views/PomsView";
 
 import './App.css';
 
@@ -22,6 +23,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <PomView />
+            </Route>
+            <Route path="/poms">
+              <PomsView />
             </Route>
           </Switch>
         </div>
