@@ -1,6 +1,6 @@
 import { PlusCircleIcon } from "@heroicons/react/solid";
-import { ReactComponent as PomsViewTitle } from "../assets/svgs/myPomsViewTitle.svg";
 
+import { ReactComponent as PomsViewTitle } from "../assets/svgs/myPomsViewTitle.svg";
 import { Button, PomCard } from "../components";
 
 export function PomsView() {
